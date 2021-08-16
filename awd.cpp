@@ -57,7 +57,7 @@ void awd::serial_port_properties(const QString &value)
     serial->setFlowControl(QSerialPort::NoFlowControl);
 }
 
-unsigned char awd::checkSumm(unsigned char array[8])
+unsigned char awd::checkSumm(const unsigned char array[8])
 {
     unsigned char summ = 0;
     for(int i = 0; i < 8; i++){
@@ -66,7 +66,7 @@ unsigned char awd::checkSumm(unsigned char array[8])
     return summ;
 }
 
-void awd::command_formation(QString value, int param_num)
+void awd::command_formation(const QString &value,const int &param_num)
 {
     command[1] = 0x78;
     command[2] = param_num;
@@ -675,6 +675,11 @@ void awd::writeData(const QByteArray &data)
         readData();
     }
     else qDebug() << "not open";
+}
+
+char16_t awd::setReadDatavalue_2(const QByteArray &data)
+{
+    return  (( ( data[4] << 8  ) | ( data[5] & 0xff ) ));
 }
 
 void awd::readData()

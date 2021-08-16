@@ -71,10 +71,10 @@ public:
 // Общие методы
     void serial_port_properties(const QString &value);
 
-    unsigned char checkSumm(unsigned char array[8]); // функция вычисления контрольной суммы
+    unsigned char checkSumm(const unsigned char array[8]); // функция вычисления контрольной суммы
 
 // Методы для параметров
-    void command_formation(QString value, int param_num);// для кнопки записать параметры по умолчанию
+    void command_formation(const QString &value, const int &param_num);// для кнопки записать параметры по умолчанию
 
     void command_formation(int param_num);// для кнопки считать параметры с платы
 
@@ -84,7 +84,7 @@ public:
 
     QByteArray int_to_QByteArray(int *array, int size);
 
-    int setReadDataValue(QByteArray data);
+    int setReadDataValue(QByteArray data);// нужно заменить
 
     void set_param_26_items();
 
@@ -149,6 +149,8 @@ private slots:
 
 // Чтение и запись
     void writeData(const QByteArray &data);
+
+    char16_t setReadDatavalue_2(const QByteArray &data);
 
     void readData();
 
