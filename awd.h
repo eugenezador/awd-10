@@ -31,12 +31,7 @@ public:
 
     unsigned char command[8] = {adress,'\x0','\x0','\x0','\x0','\x0','\x0','\x0'};
 
-    //int command_int[8];
-// параметры
-    unsigned char kod[38] = {0,1,2,3,4,5,6,7,8,9,0x10,11,12,13,14,15,16,17,18,19,20,
-                   21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36};
-    int test_array[38];
-
+//переменные для параметров
     QString param_name[38] = {"Сетевой адрес","Смещение нуля внешнего аналогового входа 1", "Смещение нуля внешнего аналогового входа 2",
                               "Смещение нуля аналогового входа <<противо-ЭДС>>", "Смещение нуля аналогового входа  <<ток>>",
                               "Резерв","Резерв","Резерв","Резерв","Резерв","Резерв","Резерв","Резерв","Ограничение минимального значения ШИМ",
@@ -49,13 +44,6 @@ public:
                               "<<Зона нечувствительности>>", "Скорость, при которой изменяется направление вращения",
                               "Скорость вращения при принудительном управлении в режиме Сл", "Коэффициент усиления","Ограничение максимальной скорости в режиме М"};
 
-    unsigned char min_value[38] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-                         0,0,0,0,0,0,0,0,0,1,0,0,1,1,0,0,0,0,1,0};
-
-    unsigned int max_value[38] = {255,1023,1023,1023,1023,65535,65535,65535,65535,65535,65535,65535,
-                         65535,1023,1023,65535,65535,65535,65535,65535,65535,65535,65535,
-                         65535,4095,15,16,15,255,10000,5000,1023,1023,1023,1023,65535,1023};
-
     unsigned int by_default[38] = {5,16,16,16,16,1023,1023,1023,1023,1023,1023,1023,1023,5,
                           991,768,160,0,1023,1023,1023,1023,768,1023,160,5,16,15,0,
                           30,64,1023,20,80,512,255,1020};
@@ -63,7 +51,7 @@ public:
     unsigned int current_param_value[38];
 
 
-// режим
+// переменные для режимов
     std::bitset<16> mode_data;
 
     std::bitset<8> mode_status;
@@ -80,28 +68,20 @@ public:
 
     int setData(int value, bool flag); // функция записи значения параметра в ячейки data1(flag = 1) или data2(flag = 0)
 
-    //int checkSumm(int* array); // функция вычисления контрольной суммы
-
-    QByteArray int_to_QByteArray(int *array, int size);
-
-    int setReadDataValue(QByteArray data);// нужно заменить
-
-    void set_param_26_items();
+    void set_param_26_items();// выбор значений параметра 26
 
     void read_current_params();// для отлова всех параметров с платы
 
 
-// Методы для режима
-    void set_mode_items();
+// Методы для режимов
+    void set_mode_items();// Возможные режимы на выбор
 
-    void set_mode_connections();
+    void set_mode_connections();// подача сигналов при изменении значений
 
-// Статус
-    void status_no_edit();
+// Методы для статуса
+    void status_no_edit();// отключает возможность редактирования мышкой
 
-    void status_read(const QByteArray &data);
-
-    void slot_for_status();
+    void status_read(const QByteArray &data);// выделяет и прочитанной команды значение статуса и выставляет соответствующие галочки
 
 // Методы для регулятора
     void real_plot(const int &value);
@@ -137,7 +117,9 @@ private slots:
 
     void on_Kd_valueChanged(int value);
 
-    void on_speed_slider_valueChanged(int value);
+    //void on_speed_slider_valueChanged(int value);
+
+    void on_speed_horizontalSlider_valueChanged(int value);
 
     void on_stop_button_clicked();
 
@@ -150,7 +132,7 @@ private slots:
 // Чтение и запись
     void writeData(const QByteArray &data);
 
-    char16_t setReadDatavalue_2(const QByteArray &data);
+    char16_t setReadDataValue(const QByteArray &data);
 
     void readData();
 
@@ -233,6 +215,9 @@ private slots:
     void on_save_to_file_clicked();
 
     void on_load_from_file_clicked();
+
+
+
 
 private:
     Ui::awd *ui;
