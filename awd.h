@@ -31,6 +31,8 @@ public:
 
     unsigned char command[8] = {adress,'\x0','\x0','\x0','\x0','\x0','\x0','\x0'};
 
+    //QVector<QWidget> wid = {ui};
+
 //переменные для параметров
     QString param_name[38] = {"Сетевой адрес","Смещение нуля внешнего аналогового входа 1", "Смещение нуля внешнего аналогового входа 2",
                               "Смещение нуля аналогового входа <<противо-ЭДС>>", "Смещение нуля аналогового входа  <<ток>>",
@@ -99,6 +101,13 @@ private slots:
 
     void on_read_all_clicked();
 
+// Работа с файлами
+    void on_save_to_file_clicked();
+
+    void on_load_from_file_clicked();
+
+    void on_write_selected_clicked();
+
 // Режим
     void change_state();
 
@@ -117,17 +126,20 @@ private slots:
 
     void on_Kd_valueChanged(int value);
 
-    //void on_speed_slider_valueChanged(int value);
-
     void on_speed_horizontalSlider_valueChanged(int value);
 
     void on_stop_button_clicked();
+
+    void on_Kp_spinBox_valueChanged(const QString &arg1);
+
+    void on_Ki_spinBox_valueChanged(const QString &arg1);
+
+    void on_Kd_spinBox_valueChanged(const QString &arg1);
 
 // График
     void plot_settings();
 
     void on_btn_clear_clicked();
-
 
 // Чтение и запись
     void writeData(const QByteArray &data);
@@ -135,89 +147,6 @@ private slots:
     char16_t setReadDataValue(const QByteArray &data);
 
     void readData();
-
-// Параметры слоты
-    void on_param_new_value_0_editingFinished();
-
-    void on_param_new_value_1_editingFinished();
-
-    void on_param_new_value_2_editingFinished();
-
-    void on_param_new_value_3_editingFinished();
-
-    void on_param_new_value_4_editingFinished();
-
-    void on_param_new_value_5_editingFinished();
-
-    void on_param_new_value_6_editingFinished();
-
-    void on_param_new_value_7_editingFinished();
-
-    void on_param_new_value_8_editingFinished();
-
-    void on_param_new_value_9_editingFinished();
-
-    void on_param_new_value_10_editingFinished();
-
-    void on_param_new_value_11_editingFinished();
-
-    void on_param_new_value_12_editingFinished();
-
-    void on_param_new_value_13_editingFinished();
-
-    void on_param_new_value_14_editingFinished();
-
-    void on_param_new_value_15_editingFinished();
-
-    void on_param_new_value_16_editingFinished();
-
-    void on_param_new_value_17_editingFinished();
-
-    void on_param_new_value_18_editingFinished();
-
-    void on_param_new_value_19_editingFinished();
-
-    void on_param_new_value_20_editingFinished();
-
-    void on_param_new_value_21_editingFinished();
-
-    void on_param_new_value_22_editingFinished();
-
-    void on_param_new_value_23_editingFinished();
-
-    void on_param_new_value_24_editingFinished();
-
-    void on_param_new_value_25_editingFinished();
-
-    void on_param_new_value_27_editingFinished();
-
-    void on_param_new_value_28_editingFinished();
-
-    void on_param_new_value_29_editingFinished();
-
-    void on_param_new_value_30_editingFinished();
-
-    void on_param_new_value_31_editingFinished();
-
-    void on_param_new_value_32_editingFinished();
-
-    void on_param_new_value_33_editingFinished();
-
-    void on_param_new_value_34_editingFinished();
-
-    void on_param_new_value_35_editingFinished();
-
-    void on_param_new_value_36_editingFinished();
-
-    void on_param_new_value_26_currentTextChanged(const QString &arg1);
-
-    // работа с файлами
-    void on_save_to_file_clicked();
-
-    void on_load_from_file_clicked();
-
-
-
 
 private:
     Ui::awd *ui;
