@@ -2,12 +2,15 @@
 <ui version="4.0">
  <class>awd</class>
  <widget class="QMainWindow" name="awd">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>635</width>
-    <height>323</height>
+    <width>757</width>
+    <height>411</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,6 +26,11 @@
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
            <widget class="QCheckBox" name="StLimFrw">
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>StLimFrw</string>
             </property>
@@ -30,6 +38,11 @@
           </item>
           <item>
            <widget class="QCheckBox" name="StLimRev">
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>StLimRev</string>
             </property>
@@ -39,6 +52,11 @@
            <widget class="QCheckBox" name="StinFrw">
             <property name="enabled">
              <bool>true</bool>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
             </property>
             <property name="mouseTracking">
              <bool>false</bool>
@@ -56,6 +74,11 @@
           </item>
           <item>
            <widget class="QCheckBox" name="StinRev">
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>StinRev</string>
             </property>
@@ -63,6 +86,11 @@
           </item>
           <item>
            <widget class="QCheckBox" name="StMotAct">
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>StMotAct</string>
             </property>
@@ -70,6 +98,11 @@
           </item>
           <item>
            <widget class="QCheckBox" name="StDirFrwRev">
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>StDirFrwRev</string>
             </property>
@@ -77,6 +110,11 @@
           </item>
           <item>
            <widget class="QCheckBox" name="StMaxPWM">
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>StMaxPWM</string>
             </property>
@@ -84,6 +122,11 @@
           </item>
           <item>
            <widget class="QCheckBox" name="StOverCur">
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>StOverCur</string>
             </property>
@@ -92,12 +135,23 @@
          </layout>
         </item>
         <item row="1" column="0">
-         <widget class="QComboBox" name="portName"/>
+         <widget class="QComboBox" name="portName">
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+         </widget>
         </item>
         <item row="1" column="1">
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
            <widget class="QLabel" name="label_9">
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>Передано</string>
             </property>
@@ -115,6 +169,11 @@
           </item>
           <item>
            <widget class="QLabel" name="label_11">
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>Принято</string>
             </property>
@@ -138,14 +197,14 @@
        <widget class="QTabWidget" name="tabWidget">
         <property name="font">
          <font>
-          <pointsize>8</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="tabPosition">
          <enum>QTabWidget::North</enum>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>2</number>
         </property>
         <property name="elideMode">
          <enum>Qt::ElideLeft</enum>
@@ -165,8 +224,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>577</width>
-               <height>894</height>
+               <width>699</width>
+               <height>899</height>
               </rect>
              </property>
              <layout class="QGridLayout" name="gridLayout_2">
@@ -174,6 +233,11 @@
                <layout class="QGridLayout" name="gridLayout">
                 <item row="11" column="1">
                  <widget class="QSpinBox" name="param_new_value_21">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="maximum">
                    <number>65535</number>
                   </property>
@@ -181,6 +245,11 @@
                 </item>
                 <item row="24" column="0">
                  <widget class="QLabel" name="param_name_34">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -198,6 +267,11 @@
                 </item>
                 <item row="11" column="3">
                  <widget class="QLabel" name="param_current_value_21">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -214,6 +288,11 @@
                 </item>
                 <item row="20" column="0">
                  <widget class="QLabel" name="param_name_30">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -231,6 +310,11 @@
                 </item>
                 <item row="21" column="0">
                  <widget class="QLabel" name="param_name_31">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -260,6 +344,11 @@
                 </item>
                 <item row="22" column="5">
                  <widget class="QLabel" name="range_of_value_32">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -276,6 +365,11 @@
                 </item>
                 <item row="6" column="3">
                  <widget class="QLabel" name="param_current_value_13">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -292,6 +386,11 @@
                 </item>
                 <item row="0" column="3">
                  <widget class="QLabel" name="param_current_value_title">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -308,6 +407,11 @@
                 </item>
                 <item row="9" column="3">
                  <widget class="QLabel" name="param_current_value_16">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -324,6 +428,11 @@
                 </item>
                 <item row="10" column="3">
                  <widget class="QLabel" name="param_current_value_17">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -340,6 +449,11 @@
                 </item>
                 <item row="24" column="1">
                  <widget class="QSpinBox" name="param_new_value_34">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="maximum">
                    <number>1023</number>
                   </property>
@@ -347,6 +461,11 @@
                 </item>
                 <item row="17" column="1">
                  <widget class="QSpinBox" name="param_new_value_27">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="maximum">
                    <number>15</number>
                   </property>
@@ -354,6 +473,11 @@
                 </item>
                 <item row="22" column="1">
                  <widget class="QSpinBox" name="param_new_value_32">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="maximum">
                    <number>1023</number>
                   </property>
@@ -361,6 +485,11 @@
                 </item>
                 <item row="21" column="1">
                  <widget class="QSpinBox" name="param_new_value_31">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="maximum">
                    <number>1023</number>
                   </property>
@@ -368,6 +497,11 @@
                 </item>
                 <item row="13" column="0">
                  <widget class="QLabel" name="param_name_23">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -385,6 +519,11 @@
                 </item>
                 <item row="24" column="3">
                  <widget class="QLabel" name="param_current_value_34">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -401,6 +540,11 @@
                 </item>
                 <item row="7" column="0">
                  <widget class="QLabel" name="param_name_14">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -418,6 +562,11 @@
                 </item>
                 <item row="15" column="1">
                  <widget class="QSpinBox" name="param_new_value_25">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="maximum">
                    <number>15</number>
                   </property>
@@ -425,6 +574,11 @@
                 </item>
                 <item row="0" column="5">
                  <widget class="QLabel" name="range_of_value_title">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -441,6 +595,11 @@
                 </item>
                 <item row="16" column="0">
                  <widget class="QLabel" name="param_name_26">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -458,6 +617,11 @@
                 </item>
                 <item row="5" column="5">
                  <widget class="QLabel" name="range_of_value_4">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -474,6 +638,11 @@
                 </item>
                 <item row="15" column="0">
                  <widget class="QLabel" name="param_name_25">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -491,6 +660,11 @@
                 </item>
                 <item row="9" column="1">
                  <widget class="QSpinBox" name="param_new_value_16">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="maximum">
                    <number>65535</number>
                   </property>
@@ -498,6 +672,11 @@
                 </item>
                 <item row="14" column="1">
                  <widget class="QSpinBox" name="param_new_value_24">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="maximum">
                    <number>4095</number>
                   </property>
@@ -512,6 +691,11 @@
                 </item>
                 <item row="21" column="3">
                  <widget class="QLabel" name="param_current_value_31">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -528,6 +712,11 @@
                 </item>
                 <item row="23" column="1">
                  <widget class="QSpinBox" name="param_new_value_33">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="maximum">
                    <number>1023</number>
                   </property>
@@ -535,6 +724,11 @@
                 </item>
                 <item row="10" column="5">
                  <widget class="QLabel" name="range_of_value_17">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -551,6 +745,11 @@
                 </item>
                 <item row="19" column="5">
                  <widget class="QLabel" name="range_of_value_29">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -567,6 +766,11 @@
                 </item>
                 <item row="22" column="3">
                  <widget class="QLabel" name="param_current_value_32">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -583,6 +787,11 @@
                 </item>
                 <item row="26" column="5">
                  <widget class="QLabel" name="range_of_value_36">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -599,6 +808,11 @@
                 </item>
                 <item row="10" column="0">
                  <widget class="QLabel" name="param_name_17">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -616,6 +830,11 @@
                 </item>
                 <item row="5" column="3">
                  <widget class="QLabel" name="param_current_value_4">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -632,6 +851,11 @@
                 </item>
                 <item row="19" column="0">
                  <widget class="QLabel" name="param_name_29">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -649,6 +873,11 @@
                 </item>
                 <item row="20" column="3">
                  <widget class="QLabel" name="param_current_value_30">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -665,6 +894,11 @@
                 </item>
                 <item row="19" column="3">
                  <widget class="QLabel" name="param_current_value_29">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -681,6 +915,11 @@
                 </item>
                 <item row="2" column="5">
                  <widget class="QLabel" name="range_of_value_1">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -697,6 +936,11 @@
                 </item>
                 <item row="13" column="3">
                  <widget class="QLabel" name="param_current_value_23">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -713,6 +957,11 @@
                 </item>
                 <item row="17" column="3">
                  <widget class="QLabel" name="param_current_value_27">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -729,6 +978,11 @@
                 </item>
                 <item row="20" column="1">
                  <widget class="QSpinBox" name="param_new_value_30">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="maximum">
                    <number>5000</number>
                   </property>
@@ -736,6 +990,11 @@
                 </item>
                 <item row="15" column="3">
                  <widget class="QLabel" name="param_current_value_25">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -752,6 +1011,11 @@
                 </item>
                 <item row="9" column="0">
                  <widget class="QLabel" name="param_name_16">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -769,6 +1033,11 @@
                 </item>
                 <item row="8" column="0">
                  <widget class="QLabel" name="param_name_15">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -786,6 +1055,11 @@
                 </item>
                 <item row="8" column="1">
                  <widget class="QSpinBox" name="param_new_value_15">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="maximum">
                    <number>65535</number>
                   </property>
@@ -793,6 +1067,11 @@
                 </item>
                 <item row="9" column="5">
                  <widget class="QLabel" name="range_of_value_16">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -809,6 +1088,11 @@
                 </item>
                 <item row="7" column="1">
                  <widget class="QSpinBox" name="param_new_value_14">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="maximum">
                    <number>1023</number>
                   </property>
@@ -816,6 +1100,11 @@
                 </item>
                 <item row="21" column="5">
                  <widget class="QLabel" name="range_of_value_31">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -832,6 +1121,11 @@
                 </item>
                 <item row="12" column="5">
                  <widget class="QLabel" name="range_of_value_22">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -848,6 +1142,11 @@
                 </item>
                 <item row="4" column="5">
                  <widget class="QLabel" name="range_of_value_3">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -864,6 +1163,11 @@
                 </item>
                 <item row="4" column="3">
                  <widget class="QLabel" name="param_current_value_3">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -880,6 +1184,11 @@
                 </item>
                 <item row="6" column="0">
                  <widget class="QLabel" name="param_name_13">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -897,6 +1206,11 @@
                 </item>
                 <item row="19" column="1">
                  <widget class="QSpinBox" name="param_new_value_29">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="maximum">
                    <number>10000</number>
                   </property>
@@ -904,6 +1218,11 @@
                 </item>
                 <item row="26" column="0">
                  <widget class="QLabel" name="param_name_36">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -921,6 +1240,11 @@
                 </item>
                 <item row="25" column="0">
                  <widget class="QLabel" name="param_name_35">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -937,6 +1261,11 @@
                 </item>
                 <item row="14" column="5">
                  <widget class="QLabel" name="range_of_value_24">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -953,6 +1282,11 @@
                 </item>
                 <item row="14" column="3">
                  <widget class="QLabel" name="param_current_value_24">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -969,6 +1303,11 @@
                 </item>
                 <item row="11" column="5">
                  <widget class="QLabel" name="range_of_value_21">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -985,6 +1324,11 @@
                 </item>
                 <item row="2" column="1">
                  <widget class="QSpinBox" name="param_new_value_1">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="maximum">
                    <number>1023</number>
                   </property>
@@ -992,6 +1336,11 @@
                 </item>
                 <item row="18" column="5">
                  <widget class="QLabel" name="range_of_value_28">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1008,6 +1357,11 @@
                 </item>
                 <item row="26" column="1">
                  <widget class="QSpinBox" name="param_new_value_36">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="maximum">
                    <number>1023</number>
                   </property>
@@ -1015,6 +1369,11 @@
                 </item>
                 <item row="25" column="3">
                  <widget class="QLabel" name="param_current_value_35">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1031,6 +1390,11 @@
                 </item>
                 <item row="11" column="0">
                  <widget class="QLabel" name="param_name_21">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1048,6 +1412,11 @@
                 </item>
                 <item row="8" column="3">
                  <widget class="QLabel" name="param_current_value_15">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1064,6 +1433,11 @@
                 </item>
                 <item row="6" column="5">
                  <widget class="QLabel" name="range_of_value_13">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1080,6 +1454,11 @@
                 </item>
                 <item row="10" column="1">
                  <widget class="QSpinBox" name="param_new_value_17">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="maximum">
                    <number>65535</number>
                   </property>
@@ -1087,6 +1466,11 @@
                 </item>
                 <item row="7" column="3">
                  <widget class="QLabel" name="param_current_value_14">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1103,6 +1487,11 @@
                 </item>
                 <item row="2" column="3">
                  <widget class="QLabel" name="param_current_value_1">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1119,6 +1508,11 @@
                 </item>
                 <item row="3" column="3">
                  <widget class="QLabel" name="param_current_value_2">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1135,6 +1529,14 @@
                 </item>
                 <item row="1" column="1">
                  <widget class="QSpinBox" name="param_new_value_0">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
+                  <property name="keyboardTracking">
+                   <bool>false</bool>
+                  </property>
                   <property name="maximum">
                    <number>255</number>
                   </property>
@@ -1142,6 +1544,11 @@
                 </item>
                 <item row="5" column="0">
                  <widget class="QLabel" name="param_name_4">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1159,6 +1566,11 @@
                 </item>
                 <item row="1" column="3">
                  <widget class="QLabel" name="param_current_value_0">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1175,6 +1587,11 @@
                 </item>
                 <item row="7" column="5">
                  <widget class="QLabel" name="range_of_value_14">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1191,16 +1608,32 @@
                 </item>
                 <item row="4" column="1">
                  <widget class="QSpinBox" name="param_new_value_3">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="maximum">
                    <number>1023</number>
                   </property>
                  </widget>
                 </item>
                 <item row="16" column="1">
-                 <widget class="QComboBox" name="param_new_value_26"/>
+                 <widget class="QComboBox" name="param_new_value_26">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
+                 </widget>
                 </item>
                 <item row="24" column="5">
                  <widget class="QLabel" name="range_of_value_34">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1217,6 +1650,11 @@
                 </item>
                 <item row="3" column="5">
                  <widget class="QLabel" name="range_of_value_2">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1233,6 +1671,11 @@
                 </item>
                 <item row="22" column="0">
                  <widget class="QLabel" name="param_name_32">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1249,6 +1692,11 @@
                 </item>
                 <item row="17" column="0">
                  <widget class="QLabel" name="param_name_27">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1266,6 +1714,11 @@
                 </item>
                 <item row="23" column="5">
                  <widget class="QLabel" name="range_of_value_33">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1282,6 +1735,11 @@
                 </item>
                 <item row="16" column="5">
                  <widget class="QLabel" name="range_of_value_26">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1298,6 +1756,11 @@
                 </item>
                 <item row="16" column="3">
                  <widget class="QLabel" name="param_current_value_26">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1314,6 +1777,11 @@
                 </item>
                 <item row="25" column="5">
                  <widget class="QLabel" name="range_of_value_35">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1330,6 +1798,11 @@
                 </item>
                 <item row="18" column="3">
                  <widget class="QLabel" name="param_current_value_28">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1346,6 +1819,11 @@
                 </item>
                 <item row="15" column="5">
                  <widget class="QLabel" name="range_of_value_25">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1362,6 +1840,11 @@
                 </item>
                 <item row="8" column="5">
                  <widget class="QLabel" name="range_of_value_15">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1378,6 +1861,11 @@
                 </item>
                 <item row="18" column="1">
                  <widget class="QSpinBox" name="param_new_value_28">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="maximum">
                    <number>255</number>
                   </property>
@@ -1385,6 +1873,11 @@
                 </item>
                 <item row="1" column="5">
                  <widget class="QLabel" name="range_of_value_0">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1401,6 +1894,11 @@
                 </item>
                 <item row="23" column="0">
                  <widget class="QLabel" name="param_name_33">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1418,6 +1916,11 @@
                 </item>
                 <item row="23" column="3">
                  <widget class="QLabel" name="param_current_value_33">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1434,6 +1937,11 @@
                 </item>
                 <item row="4" column="0">
                  <widget class="QLabel" name="param_name_3">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1451,6 +1959,11 @@
                 </item>
                 <item row="26" column="3">
                  <widget class="QLabel" name="param_current_value_36">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1467,6 +1980,11 @@
                 </item>
                 <item row="18" column="0">
                  <widget class="QLabel" name="param_name_28">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1483,6 +2001,11 @@
                 </item>
                 <item row="12" column="1">
                  <widget class="QSpinBox" name="param_new_value_22">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="maximum">
                    <number>65535</number>
                   </property>
@@ -1490,6 +2013,11 @@
                 </item>
                 <item row="0" column="1" colspan="2">
                  <widget class="QLabel" name="new_value_title">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1506,6 +2034,11 @@
                 </item>
                 <item row="5" column="1">
                  <widget class="QSpinBox" name="param_new_value_4">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="maximum">
                    <number>1023</number>
                   </property>
@@ -1513,6 +2046,11 @@
                 </item>
                 <item row="20" column="5">
                  <widget class="QLabel" name="range_of_value_30">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1529,6 +2067,11 @@
                 </item>
                 <item row="13" column="1">
                  <widget class="QSpinBox" name="param_new_value_23">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="maximum">
                    <number>65535</number>
                   </property>
@@ -1536,6 +2079,11 @@
                 </item>
                 <item row="25" column="1">
                  <widget class="QSpinBox" name="param_new_value_35">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="maximum">
                    <number>65535</number>
                   </property>
@@ -1543,6 +2091,11 @@
                 </item>
                 <item row="3" column="0">
                  <widget class="QLabel" name="param_name_2">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1560,6 +2113,11 @@
                 </item>
                 <item row="12" column="0">
                  <widget class="QLabel" name="param_name_22">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1577,6 +2135,11 @@
                 </item>
                 <item row="3" column="1">
                  <widget class="QSpinBox" name="param_new_value_2">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="maximum">
                    <number>1023</number>
                   </property>
@@ -1584,6 +2147,11 @@
                 </item>
                 <item row="13" column="5">
                  <widget class="QLabel" name="range_of_value_23">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1600,6 +2168,11 @@
                 </item>
                 <item row="0" column="0">
                  <widget class="QLabel" name="param_name_title">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1616,6 +2189,11 @@
                 </item>
                 <item row="12" column="3">
                  <widget class="QLabel" name="param_current_value_22">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1632,6 +2210,11 @@
                 </item>
                 <item row="6" column="1">
                  <widget class="QSpinBox" name="param_new_value_13">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="maximum">
                    <number>1023</number>
                   </property>
@@ -1639,6 +2222,11 @@
                 </item>
                 <item row="1" column="0">
                  <widget class="QLabel" name="param_name_0">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1655,6 +2243,11 @@
                 </item>
                 <item row="17" column="5">
                  <widget class="QLabel" name="range_of_value_27">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1671,6 +2264,11 @@
                 </item>
                 <item row="14" column="0">
                  <widget class="QLabel" name="param_name_24">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1688,6 +2286,11 @@
                 </item>
                 <item row="2" column="0">
                  <widget class="QLabel" name="param_name_1">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::Box</enum>
                   </property>
@@ -1879,6 +2482,17 @@
           </item>
           <item row="1" column="0">
            <widget class="QPushButton" name="read_all">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>8</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string> Прочитать текущие  
  значения  </string>
@@ -1887,6 +2501,17 @@
           </item>
           <item row="1" column="1">
            <widget class="QPushButton" name="write_all_by_default">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>8</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>Записать значения 
  по умолчанию</string>
@@ -1895,6 +2520,17 @@
           </item>
           <item row="1" column="2">
            <widget class="QPushButton" name="write_selected">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>8</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>Записать 
 выбранные</string>
@@ -1903,6 +2539,17 @@
           </item>
           <item row="1" column="3">
            <widget class="QPushButton" name="save_to_file">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>8</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>Сохранить в файл</string>
             </property>
@@ -1910,6 +2557,17 @@
           </item>
           <item row="1" column="4">
            <widget class="QPushButton" name="load_from_file">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>8</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>Загрузить из файла</string>
             </property>
@@ -1924,34 +2582,30 @@
          <layout class="QGridLayout" name="gridLayout_7">
           <item row="0" column="0">
            <layout class="QGridLayout" name="gridLayout_3">
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_22">
-              <property name="text">
-               <string>Режим</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="1" colspan="2">
-             <widget class="QCheckBox" name="IntrfEN">
-              <property name="text">
-               <string>Управлять разрешением вращения с помощью внешнего сигнала</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1" colspan="2">
-             <widget class="QCheckBox" name="SkipLim">
-              <property name="text">
-               <string>Использовать сигналы от концевых выключателей</string>
-              </property>
-             </widget>
-            </item>
             <item row="2" column="0">
              <widget class="QLabel" name="label_24">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>400</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
               <property name="layoutDirection">
                <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
               </property>
               <property name="text">
                <string>LimDrop</string>
@@ -1961,36 +2615,30 @@
               </property>
              </widget>
             </item>
-            <item row="6" column="0">
-             <widget class="QLabel" name="label_25">
-              <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
-              </property>
-              <property name="text">
-               <string>IntrfDir</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="7" column="0">
-             <widget class="QLabel" name="label_20">
-              <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
-              </property>
-              <property name="text">
-               <string>SrcParam</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
             <item row="1" column="0">
              <widget class="QLabel" name="label_18">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>400</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
               <property name="layoutDirection">
                <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
               </property>
               <property name="text">
                <string>SkipLim</string>
@@ -2000,40 +2648,63 @@
               </property>
              </widget>
             </item>
-            <item row="2" column="1" colspan="2">
-             <widget class="QCheckBox" name="LimDrop">
-              <property name="text">
-               <string>Удерживать двигатель при срабатывании концевого выключателя</string>
+            <item row="7" column="0">
+             <widget class="QLabel" name="label_20">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
               </property>
-             </widget>
-            </item>
-            <item row="4" column="0">
-             <widget class="QLabel" name="label_19">
+              <property name="maximumSize">
+               <size>
+                <width>400</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
               <property name="layoutDirection">
                <enum>Qt::LeftToRight</enum>
               </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
               <property name="text">
-               <string>IntrfEN</string>
+               <string>SrcParam</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
               </property>
              </widget>
             </item>
-            <item row="6" column="1" colspan="2">
-             <widget class="QCheckBox" name="IntrfDir">
-              <property name="text">
-               <string>Управлять направлением с помощью внешних сигналов</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1" colspan="2">
-             <widget class="QComboBox" name="comboBox_mode"/>
-            </item>
             <item row="3" column="0">
              <widget class="QLabel" name="label_21">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>400</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
               <property name="layoutDirection">
                <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
               </property>
               <property name="text">
                <string>StopDrop</string>
@@ -2043,17 +2714,48 @@
               </property>
              </widget>
             </item>
-            <item row="3" column="1" colspan="2">
-             <widget class="QCheckBox" name="StopDrop">
+            <item row="4" column="1" colspan="2">
+             <widget class="QCheckBox" name="IntrfEN">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
               <property name="text">
-               <string>Удерживать двигатель при остановке вращения</string>
+               <string>Управлять разрешением вращения с помощью внешнего сигнала</string>
               </property>
              </widget>
             </item>
             <item row="5" column="0">
              <widget class="QLabel" name="label_23">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>400</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
               <property name="layoutDirection">
                <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
               </property>
               <property name="text">
                <string>IntrfVel</string>
@@ -2063,49 +2765,328 @@
               </property>
              </widget>
             </item>
-            <item row="5" column="1" colspan="2">
-             <widget class="QCheckBox" name="IntrfVal">
+            <item row="3" column="1" colspan="2">
+             <widget class="QCheckBox" name="StopDrop">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
               <property name="text">
-               <string>Управлять сокростью с помощью внешних сигналов</string>
+               <string>Удерживать двигатель при остановке вращения</string>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="0">
+             <widget class="QLabel" name="label_25">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>400</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="text">
+               <string>IntrfDir</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="1" colspan="2">
+             <widget class="QCheckBox" name="IntrfDir">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Управлять направлением с помощью внешних сигналов</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1" colspan="2">
+             <widget class="QComboBox" name="comboBox_mode">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+               </font>
               </property>
              </widget>
             </item>
             <item row="7" column="1" colspan="2">
              <widget class="QCheckBox" name="SrcParam">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
               <property name="text">
                <string>Использовать параметр №31</string>
               </property>
              </widget>
             </item>
-           </layout>
-          </item>
-          <item row="0" column="1">
-           <layout class="QVBoxLayout" name="verticalLayout_2">
-            <item>
-             <widget class="QPushButton" name="read_button_regime">
+            <item row="5" column="1" colspan="2">
+             <widget class="QCheckBox" name="IntrfVal">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
               <property name="text">
-               <string>Чтение</string>
+               <string>Управлять сокростью с помощью внешних сигналов</string>
               </property>
              </widget>
             </item>
-            <item>
-             <widget class="QPushButton" name="write_button_regime">
+            <item row="4" column="0">
+             <widget class="QLabel" name="label_19">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>400</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
               <property name="text">
-               <string>Запись</string>
+               <string>IntrfEN</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_22">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>400</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="text">
+               <string>Режим</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1" colspan="2">
+             <widget class="QCheckBox" name="SkipLim">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Использовать сигналы от концевых выключателей</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1" colspan="2">
+             <widget class="QCheckBox" name="LimDrop">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Удерживать двигатель при срабатывании концевого выключателя</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QPushButton" name="start_tracking">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>800</width>
+                <height>100</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Начать слежение</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QPushButton" name="stop_mode_button">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>800</width>
+                <height>100</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
               <property name="text">
                <string>Остановить режим</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="start_tracking">
+             <widget class="QPushButton" name="write_button_regime">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>800</width>
+                <height>100</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
               <property name="text">
-               <string>Начать слежение</string>
+               <string>Запись</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="read_button_regime">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>800</width>
+                <height>100</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Чтение</string>
               </property>
              </widget>
             </item>
@@ -2117,162 +3098,197 @@
          <attribute name="title">
           <string>ПИД Регулятор</string>
          </attribute>
-         <layout class="QGridLayout" name="gridLayout_10">
+         <layout class="QGridLayout" name="gridLayout_9">
           <item row="0" column="0">
-           <layout class="QGridLayout" name="gridLayout_9">
-            <item row="0" column="0">
-             <widget class="QLabel" name="Kp_label">
-              <property name="maximumSize">
-               <size>
-                <width>20</width>
-                <height>200</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Footlight MT Light</family>
-                <pointsize>11</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-                <underline>false</underline>
-                <strikeout>false</strikeout>
-                <kerning>true</kerning>
-               </font>
-              </property>
-              <property name="text">
-               <string>Kп</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QLabel" name="Ki_label">
-              <property name="maximumSize">
-               <size>
-                <width>40</width>
-                <height>40</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Footlight MT Light</family>
-                <pointsize>11</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Kи</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="2">
-             <widget class="QLabel" name="Kd_label">
-              <property name="maximumSize">
-               <size>
-                <width>40</width>
-                <height>40</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Footlight MT Light</family>
-                <pointsize>11</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Kд</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="3" rowspan="4">
-             <widget class="QCustomPlot" name="plot" native="true"/>
-            </item>
-            <item row="1" column="0" colspan="3">
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <item>
              <layout class="QHBoxLayout" name="horizontalLayout_5">
               <item>
-               <widget class="QSlider" name="Kp">
-                <property name="maximum">
-                 <number>1000</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-               </widget>
+               <layout class="QVBoxLayout" name="verticalLayout_2">
+                <item>
+                 <widget class="QLabel" name="Kp_label">
+                  <property name="maximumSize">
+                   <size>
+                    <width>20</width>
+                    <height>200</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Footlight MT Light</family>
+                    <pointsize>14</pointsize>
+                    <weight>50</weight>
+                    <italic>false</italic>
+                    <bold>false</bold>
+                    <underline>false</underline>
+                    <strikeout>false</strikeout>
+                    <kerning>true</kerning>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Kп</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSlider" name="Kp">
+                  <property name="maximumSize">
+                   <size>
+                    <width>20</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="maximum">
+                   <number>1000</number>
+                  </property>
+                  <property name="value">
+                   <number>768</number>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSpinBox" name="Kp_spinBox">
+                  <property name="maximumSize">
+                   <size>
+                    <width>70</width>
+                    <height>70</height>
+                   </size>
+                  </property>
+                  <property name="maximum">
+                   <number>1000</number>
+                  </property>
+                  <property name="value">
+                   <number>768</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </item>
               <item>
-               <widget class="QSlider" name="Ki">
-                <property name="maximum">
-                 <number>1000</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-               </widget>
+               <layout class="QVBoxLayout" name="verticalLayout_3">
+                <item>
+                 <widget class="QLabel" name="Ki_label">
+                  <property name="maximumSize">
+                   <size>
+                    <width>40</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Footlight MT Light</family>
+                    <pointsize>14</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Kи</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSlider" name="Ki">
+                  <property name="maximumSize">
+                   <size>
+                    <width>20</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="maximum">
+                   <number>1000</number>
+                  </property>
+                  <property name="value">
+                   <number>160</number>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSpinBox" name="Ki_spinBox">
+                  <property name="maximumSize">
+                   <size>
+                    <width>70</width>
+                    <height>70</height>
+                   </size>
+                  </property>
+                  <property name="maximum">
+                   <number>1000</number>
+                  </property>
+                  <property name="value">
+                   <number>160</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </item>
               <item>
-               <widget class="QSlider" name="Kd">
-                <property name="maximum">
-                 <number>1000</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-               </widget>
+               <layout class="QVBoxLayout" name="verticalLayout_4">
+                <item>
+                 <widget class="QLabel" name="Kd_label">
+                  <property name="maximumSize">
+                   <size>
+                    <width>40</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Footlight MT Light</family>
+                    <pointsize>14</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Kд</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSlider" name="Kd">
+                  <property name="maximumSize">
+                   <size>
+                    <width>20</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="maximum">
+                   <number>1000</number>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSpinBox" name="Kd_spinBox">
+                  <property name="maximumSize">
+                   <size>
+                    <width>70</width>
+                    <height>70</height>
+                   </size>
+                  </property>
+                  <property name="maximum">
+                   <number>1000</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </item>
              </layout>
             </item>
-            <item row="2" column="0" colspan="3">
-             <layout class="QHBoxLayout" name="horizontalLayout_6">
-              <item>
-               <widget class="QSpinBox" name="Kp_spinBox">
-                <property name="maximumSize">
-                 <size>
-                  <width>70</width>
-                  <height>70</height>
-                 </size>
-                </property>
-                <property name="maximum">
-                 <number>1000</number>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QSpinBox" name="Ki_spinBox">
-                <property name="maximumSize">
-                 <size>
-                  <width>70</width>
-                  <height>70</height>
-                 </size>
-                </property>
-                <property name="maximum">
-                 <number>1000</number>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QSpinBox" name="Kd_spinBox">
-                <property name="maximumSize">
-                 <size>
-                  <width>70</width>
-                  <height>70</height>
-                 </size>
-                </property>
-                <property name="maximum">
-                 <number>1000</number>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item row="3" column="0" rowspan="2" colspan="3">
+            <item>
              <layout class="QVBoxLayout" name="verticalLayout">
               <item>
                <widget class="QLabel" name="label_2">
@@ -2284,7 +3300,7 @@
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>11</pointsize>
+                  <pointsize>14</pointsize>
                  </font>
                 </property>
                 <property name="text">
@@ -2297,6 +3313,12 @@
               </item>
               <item>
                <widget class="QSlider" name="speed_horizontalSlider">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="maximumSize">
                  <size>
                   <width>170</width>
@@ -2315,95 +3337,183 @@
                </widget>
               </item>
               <item>
-               <widget class="QSpinBox" name="speed_spinBox">
-                <property name="maximumSize">
-                 <size>
-                  <width>70</width>
-                  <height>70</height>
-                 </size>
-                </property>
-                <property name="minimum">
-                 <number>-1000</number>
-                </property>
-                <property name="maximum">
-                 <number>1000</number>
-                </property>
-               </widget>
+               <layout class="QHBoxLayout" name="horizontalLayout_7">
+                <item>
+                 <widget class="QSpinBox" name="speed_spinBox">
+                  <property name="maximumSize">
+                   <size>
+                    <width>100</width>
+                    <height>70</height>
+                   </size>
+                  </property>
+                  <property name="minimum">
+                   <number>-1000</number>
+                  </property>
+                  <property name="maximum">
+                   <number>1000</number>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="stop_button">
+                  <property name="maximumSize">
+                   <size>
+                    <width>100</width>
+                    <height>70</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Forte</family>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="layoutDirection">
+                   <enum>Qt::LeftToRight</enum>
+                  </property>
+                  <property name="text">
+                   <string>Стоп</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </item>
-              <item>
-               <widget class="QPushButton" name="stop_button">
-                <property name="maximumSize">
-                 <size>
-                  <width>70</width>
-                  <height>70</height>
-                 </size>
-                </property>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="1">
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <item>
+             <widget class="QCustomPlot" name="plot" native="true"/>
+            </item>
+            <item>
+             <layout class="QGridLayout" name="gridLayout_4">
+              <item row="3" column="1">
+               <widget class="QCheckBox" name="A_vx_2_checkBox">
                 <property name="font">
                  <font>
-                  <family>Forte</family>
                   <pointsize>11</pointsize>
                  </font>
                 </property>
                 <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
+                 <enum>Qt::RightToLeft</enum>
                 </property>
-                <property name="text">
-                 <string>Стоп</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item row="4" column="3">
-             <layout class="QGridLayout" name="gridLayout_4">
-              <item row="0" column="0">
-               <widget class="QCheckBox" name="A_vx_1_checkBox">
-                <property name="text">
-                 <string>А.вх1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QCheckBox" name="speed_checkBox">
-                <property name="text">
-                 <string>Скорость</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="2">
-               <widget class="QPushButton" name="btn_clear">
-                <property name="text">
-                 <string>Clear</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QCheckBox" name="A_vx_2_checkBox">
                 <property name="text">
                  <string>А.вх2</string>
                 </property>
                </widget>
               </item>
-              <item row="1" column="1">
+              <item row="0" column="2">
+               <widget class="QCheckBox" name="speed_checkBox">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Скорость</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
                <widget class="QCheckBox" name="status_checkBox">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
                 <property name="text">
                  <string>Статус</string>
                 </property>
                </widget>
               </item>
-              <item row="1" column="2">
+              <item row="0" column="1">
+               <widget class="QCheckBox" name="A_vx_1_checkBox">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>А.вх1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
                <layout class="QHBoxLayout" name="horizontalLayout_3">
                 <item>
                  <widget class="QLabel" name="label">
+                  <property name="maximumSize">
+                   <size>
+                    <width>100</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
                   <property name="text">
                    <string>Цикл.мс:</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QSpinBox" name="spinBox_period"/>
+                 <widget class="QSpinBox" name="spinBox_period">
+                  <property name="maximumSize">
+                   <size>
+                    <width>100</width>
+                    <height>70</height>
+                   </size>
+                  </property>
+                  <property name="layoutDirection">
+                   <enum>Qt::LeftToRight</enum>
+                  </property>
+                  <property name="maximum">
+                   <number>10000</number>
+                  </property>
+                 </widget>
                 </item>
                </layout>
+              </item>
+              <item row="0" column="4">
+               <widget class="QPushButton" name="btn_clear">
+                <property name="maximumSize">
+                 <size>
+                  <width>120</width>
+                  <height>70</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Очистить</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="3">
+               <widget class="QPushButton" name="export_button">
+                <property name="text">
+                 <string>Экспорт</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QLineEdit" name="lineEdit"/>
               </item>
              </layout>
             </item>
@@ -2451,12 +3561,12 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>133</x>
-     <y>324</y>
+     <x>92</x>
+     <y>336</y>
     </hint>
     <hint type="destinationlabel">
-     <x>141</x>
-     <y>324</y>
+     <x>155</x>
+     <y>307</y>
     </hint>
    </hints>
   </connection>
@@ -2471,8 +3581,8 @@
      <y>84</y>
     </hint>
     <hint type="destinationlabel">
-     <x>34</x>
-     <y>84</y>
+     <x>48</x>
+     <y>260</y>
     </hint>
    </hints>
   </connection>
@@ -2483,12 +3593,12 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>84</y>
+     <x>187</x>
+     <y>260</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>84</y>
+     <x>160</x>
+     <y>145</y>
     </hint>
    </hints>
   </connection>
@@ -2503,8 +3613,8 @@
      <y>84</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>84</y>
+     <x>130</x>
+     <y>260</y>
     </hint>
    </hints>
   </connection>
@@ -2515,12 +3625,12 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>84</y>
+     <x>160</x>
+     <y>145</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>84</y>
+     <x>187</x>
+     <y>260</y>
     </hint>
    </hints>
   </connection>
@@ -2531,8 +3641,8 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>94</x>
-     <y>84</y>
+     <x>130</x>
+     <y>260</y>
     </hint>
     <hint type="destinationlabel">
      <x>102</x>
@@ -2547,12 +3657,12 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>45</x>
-     <y>84</y>
+     <x>59</x>
+     <y>260</y>
     </hint>
     <hint type="destinationlabel">
-     <x>68</x>
-     <y>84</y>
+     <x>64</x>
+     <y>145</y>
     </hint>
    </hints>
   </connection>

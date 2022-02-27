@@ -9,7 +9,7 @@
 #include<QMessageBox>
 #include<QFile>
 #include<QTextStream>
-#include<bitset>
+//#include<bitset>
 #include<qcustomplot.h>
 
 
@@ -31,7 +31,7 @@ public:
 
     unsigned char command[8] = {adress,'\x0','\x0','\x0','\x0','\x0','\x0','\x0'};
 
-    //QVector<QWidget> wid = {ui};
+    QLabel* param_current_value_array[38];
 
 //переменные для параметров
     QString param_name[38] = {"Сетевой адрес","Смещение нуля внешнего аналогового входа 1", "Смещение нуля внешнего аналогового входа 2",
@@ -54,12 +54,15 @@ public:
 
 
 // переменные для режимов
-    std::bitset<16> mode_data;
+    //std::bitset<16> mode_data;
+    unsigned char mode_data1 = 0;
+    unsigned char mode_data0 = 0;
 
-    std::bitset<8> mode_status;
+    //std::bitset<8> mode_status;
+    unsigned char mode_status = 0;
 
 // Общие методы
-    void serial_port_properties(const QString &value);
+    void serial_port_properties(const QString &text);
 
     unsigned char checkSumm(const unsigned char array[8]); // функция вычисления контрольной суммы
 
@@ -68,11 +71,11 @@ public:
 
     void command_formation(int param_num);// для кнопки считать параметры с платы
 
-    int setData(int value, bool flag); // функция записи значения параметра в ячейки data1(flag = 1) или data2(flag = 0)
-
     void set_param_26_items();// выбор значений параметра 26
 
     void read_current_params();// для отлова всех параметров с платы
+
+    void set_labels_array();
 
 
 // Методы для режимов
@@ -86,13 +89,17 @@ public:
     void status_read(const QByteArray &data);// выделяет и прочитанной команды значение статуса и выставляет соответствующие галочки
 
 // Методы для регулятора
-    void real_plot(const int &value);
+    void real_plot(const QByteArray &data);
 
     void slot_for_new_point();
 
-    void slot_for_A_vx_1();
+    void chart_update_period(const int &value);
 
-    void slot_for_A_vx_2();
+    //void slotMousePress(QMouseEvent * event);
+
+    //void slot_for_A_vx_1();
+
+    //void slot_for_A_vx_2();
 
 private slots:  
 // Параметры
@@ -144,17 +151,30 @@ private slots:
 // Чтение и запись
     void writeData(const QByteArray &data);
 
-    char16_t setReadDataValue(const QByteArray &data);
+    char16_t setReadDataValue(const QByteArray &data);// считывает значения с позиций дата0 и дата1
 
     void readData();
+
+    void on_spinBox_period_editingFinished();
+
+    void on_export_button_clicked();
 
 private:
     Ui::awd *ui;
 
     QSerialPort *serial;// указатель на область памяти для экземпляра порта
 
+    QString currentPortName;// для записи предыдущего значения порта
+
     QTimer *timer;
 
-    QVector<double> qv_x, qv_y;
+    //QCPItemTracer *tracer;
+
+    QVector<double> qv_x, qv_y;//вектор скорости
+
+    QVector<double> qavx1_x, qavx1_y;// вектор Aвх1
+
+    QVector<double> qavx2_x, qavx2_y;// вектор Aвх2
+
 };
 #endif // AWD_H

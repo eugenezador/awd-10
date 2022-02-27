@@ -9,62 +9,92 @@ awd::awd(QWidget *parent)
 
     serial = new QSerialPort(this);
 
-//чтение доступных портов
-//
+//чтение доступных портов при запуске
     foreach (const QSerialPortInfo &serialPortInfo, QSerialPortInfo::availablePorts())
        {
            ui->portName->addItem(serialPortInfo.portName());
        }
-    connect(ui->portName, &QComboBox::currentTextChanged, this, &awd::serial_port_properties);
+    //connect(ui->portName, &QComboBox::currentTextChanged, this, &awd::serial_port_properties);
 
 //согласование значения в таблице и во вкладке пид регулятор
-    ui->Kp_spinBox->setValue(ui->param_current_value_15->text().toInt());
-    ui->Ki_spinBox->setValue(ui->param_current_value_16->text().toInt());
-    ui->Kd_spinBox->setValue(ui->param_current_value_17->text().toInt());
+    //ui->Kp_spinBox->setValue(768);//эта команда видет к передаче через ком порт при запуске
+    //ui->Ki_spinBox->setValue(160);// эта тоже  как они вызывают функцию write Data?
+    ui->Kd_spinBox->setValue(0);
 
 // параметры порта
-    serial_port_properties(this->ui->portName->currentText());
+    currentPortName = ui->portName->currentText();
+    serial_port_properties(currentPortName);
+
+    connect(ui->portName, &QComboBox::currentTextChanged, this, &awd::serial_port_properties);
 
 // Параметры
+    set_labels_array();
     set_param_26_items();
 
 // Режим
     set_mode_items();
+    set_mode_connections();
 
 // Статус
     status_no_edit();
-    set_mode_connections();
 
 // График
     plot_settings();
+    //connect(ui->plot, &QCustomPlot::mouseMove, this, &awd::slotMousePress);
+
+    // Инициализируем трассировщик
+    //tracer = new QCPItemTracer(ui->plot);
+    //tracer->setGraph(ui->plot->graph(0));
+    //tracer->setGraph(ui->plot->graph(1));
+    //tracer->setGraph(ui->plot->graph(2));
 
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &awd::slot_for_new_point);// соединение для создания новой точки скорости
-    connect(timer, &QTimer::timeout, this, &awd::slot_for_A_vx_1);
-    connect(timer, &QTimer::timeout, this, &awd::slot_for_A_vx_2);
-    //ui->spinBox_period->setValue(1000);
 
-    timer->start(1000);
 
+    timer->start(2000);
+    ui->spinBox_period->setValue(2000);
 }
 
 awd::~awd()
 {
     delete timer;
+    //delete tracer;
+    //delete timer_avx1;
+    //delete timer_avx2;
     serial->close();
     delete serial;
     delete ui;
 }
 
-void awd::serial_port_properties(const QString &value)
+void awd::serial_port_properties(const QString &text)
 {
-    serial->setPortName(value);// Имя порта
-    serial->open(QIODevice::ReadWrite);
-    serial->setBaudRate(QSerialPort::Baud9600);// Скорость обмена
-    serial->setDataBits(QSerialPort::Data8);// Биты данных
-    serial->setParity(QSerialPort::NoParity);
-    serial->setStopBits(QSerialPort::OneStop);
-    serial->setFlowControl(QSerialPort::NoFlowControl);
+
+    bool currentPortNameChanged = false;
+
+    if (currentPortName != text) {
+        currentPortName = text;
+        currentPortNameChanged = true;
+       } else {
+           currentPortNameChanged = false;
+       }
+
+    if (currentPortNameChanged) {
+
+        serial->close();
+
+        serial->setPortName(currentPortName);
+
+        serial->open(QIODevice::ReadWrite);
+        serial->setBaudRate(QSerialPort::Baud9600);
+        serial->setDataBits(QSerialPort::Data8);
+        serial->setParity(QSerialPort::NoParity);
+        serial->setStopBits(QSerialPort::OneStop);
+        serial->setFlowControl(QSerialPort::NoFlowControl);
+     }
+
+     qDebug() << "PORT: " << text << " : " << serial->portName();
+
 }
 
 unsigned char awd::checkSumm(const unsigned char array[8])
@@ -78,6 +108,8 @@ unsigned char awd::checkSumm(const unsigned char array[8])
 
 void awd::command_formation(const QString &value,const int &param_num)
 {
+    //serial_port_properties();
+
     command[1] = 0x78;
     command[2] = param_num;
     command[3] = 0x00;
@@ -87,11 +119,13 @@ void awd::command_formation(const QString &value,const int &param_num)
     command[7] = checkSumm(command);
 
     writeData((QByteArray::fromRawData((const char*)command, sizeof (command))));
-    command[7] = 0x00;
+    //command[7] = 0x00;
 }
 
 void awd::command_formation(int param_num)
 {
+    //serial_port_properties();
+
     command[1] = 0x87;
     command[2] = param_num;
     command[3] = 0x00;
@@ -101,19 +135,7 @@ void awd::command_formation(int param_num)
     command[7] = checkSumm(command);
 
     writeData((QByteArray::fromRawData((const char*)command, sizeof (command))));
-    command[7] = 0x00;
-}
-
-
-int awd::setData(int value, bool flag)
-{
-    if (flag)
-    {
-        return (value >> 8) & 0xFF;
-    } else
-    {
-        return value & 0xFF;
-    }
+    //command[7] = 0x00;
 }
 
 void awd::set_param_26_items()
@@ -123,6 +145,39 @@ void awd::set_param_26_items()
     ui->param_new_value_26->addItem("2");
     ui->param_new_value_26->addItem("4");
     ui->param_new_value_26->addItem("8");
+}
+
+void awd::set_labels_array()
+{
+    param_current_value_array[0] = ui->param_current_value_0;
+    param_current_value_array[1] = ui->param_current_value_1;
+    param_current_value_array[2] = ui->param_current_value_2;
+    param_current_value_array[3] = ui->param_current_value_3;
+    param_current_value_array[4] = ui->param_current_value_4;
+
+    param_current_value_array[13]= ui->param_current_value_13;
+    param_current_value_array[14] = ui->param_current_value_14;
+    param_current_value_array[15] = ui->param_current_value_15;
+    param_current_value_array[16] = ui->param_current_value_16;
+    param_current_value_array[17] = ui->param_current_value_17;
+
+    param_current_value_array[21] = ui->param_current_value_21;
+    param_current_value_array[22] = ui->param_current_value_22;
+    param_current_value_array[23] = ui->param_current_value_23;
+    param_current_value_array[24] = ui->param_current_value_24;
+    param_current_value_array[25] = ui->param_current_value_25;
+    param_current_value_array[26] = ui->param_current_value_26;
+    param_current_value_array[27] = ui->param_current_value_27;
+    param_current_value_array[28] = ui->param_current_value_28;
+    param_current_value_array[29] = ui->param_current_value_29;
+    param_current_value_array[30] = ui->param_current_value_30;
+
+    param_current_value_array[31] = ui->param_current_value_31;
+    param_current_value_array[32] = ui->param_current_value_32;
+    param_current_value_array[33] = ui->param_current_value_33;
+    param_current_value_array[34] = ui->param_current_value_34;
+    param_current_value_array[35] = ui->param_current_value_35;
+    param_current_value_array[36] = ui->param_current_value_36;
 }
 
 void awd::set_mode_items()
@@ -173,88 +228,191 @@ void awd::status_no_edit()
 
 void awd::status_read(const QByteArray &data)
 {
-    mode_status = data.at(6);
 
-    if(mode_status[0] == 1) ui->StLimFrw->setChecked(1);
+    mode_status = data[6];
+
+    if(mode_status & 1) ui->StLimFrw->setChecked(1);
     else ui->StLimFrw->setChecked(0);
 
-    if(mode_status[1] == 1) ui->StLimRev->setChecked(1);
+    if(mode_status & 2) ui->StLimRev->setChecked(1);
     else ui->StLimRev->setChecked(0);
 
-    if(mode_status[2] == 1) ui->StinFrw->setChecked(1);
+    if(mode_status & 4) ui->StinFrw->setChecked(1);
     else ui->StinFrw->setChecked(0);
 
-    if(mode_status[3] == 1) ui->StinRev->setChecked(1);
+    if(mode_status & 8) ui->StinRev->setChecked(1);
     else ui->StinRev->setChecked(0);
 
-    if(mode_status[4] == 1) ui->StMotAct->setChecked(1);
+    if(mode_status & 16) ui->StMotAct->setChecked(1);
     else ui->StMotAct->setChecked(0);
 
-    if(mode_status[5] == 1) ui->StDirFrwRev->setChecked(1);
+    if(mode_status & 32) ui->StDirFrwRev->setChecked(1);
     else ui->StDirFrwRev->setChecked(0);
 
-    if(mode_status[6] == 1) ui->StMaxPWM->setChecked(1);
+    if(mode_status & 64) ui->StMaxPWM->setChecked(1);
     else ui->StMaxPWM->setChecked(0);
 
-    if(mode_status[7] == 1) ui->StOverCur->setChecked(1);
+    if(mode_status & 128) ui->StOverCur->setChecked(1);
     else ui->StOverCur->setChecked(0);
 
-    mode_status.reset();
+    mode_status = 0;
 }
 
-void awd::real_plot(const int &value)
-{ 
-    static QTime time(QTime::currentTime());
-    double key = time.elapsed()/1000.0;
-        static double lastPointKey = 0;
+void awd::real_plot( const QByteArray &data )
+{
+
+    //static QTime time(QTime::currentTime());
+    //double key = time.elapsed()/1000.0;
+
+    static QElapsedTimer timer;
+    double key = timer.elapsed() / 1000.0;
+
+    static double lastPointKey = 0;
         if(key - lastPointKey > 0.002)
         {
-            qv_x.append(key);
-            qv_y.append(value);
-            qDebug() << qv_x << ":" << qv_y;
-            ui->plot->graph(0)->setData(qv_x, qv_y);
+            //qv_x.append(key);
+
+
+              if( data[2] == (char)0x00 )
+              {
+              qavx1_x.append(key);
+              qavx1_y.append(setReadDataValue(data));
+              qDebug() << "Avx1: " << qavx1_x << ":" << qavx1_y;
+              ui->plot->graph(1)->setData(qavx1_x, qavx1_y);
+              //ui->plot->graph(1)->rescaleValueAxis(true);
+              }
+
+
+
+             if( data[2] == (char)0x01 )
+             {
+              qavx2_x.append(key);
+              qavx2_y.append(setReadDataValue(data));
+              qDebug() << "Avx2: " << qavx2_x << " : " << qavx2_y;
+              ui->plot->graph(2)->setData(qavx2_x, qavx2_y);
+              //ui->plot->graph(2)->rescaleValueAxis(true);
+             }
+
+
+
+              if( data[2] == (char)0x05 )
+              {
+               qv_x.append(key);
+               qv_y.append(setReadDataValue(data));
+               qDebug() << "speed: " << qv_x << ":" << qv_y;
+               ui->plot->graph(0)->setData(qv_x, qv_y);
+               //ui->plot->graph(0)->rescaleValueAxis();
+              }
+
+
+
             ui->plot->replot();
             ui->plot->update();
             lastPointKey = key;
-            ui->plot->graph(0)->rescaleValueAxis();
+            //ui->plot->graph(0)->rescaleValueAxis(1);
+            //ui->plot->graph(1)->rescaleValueAxis();
+            //ui->plot->graph(2)->rescaleValueAxis();
         }
 
         /* make key axis range scroll right with the data at a constant range of 8. */
         ui->plot->xAxis->setRange(key, 8, Qt::AlignRight);
+
+        //ui->plot->xAxis->setRange(*std::min_element(qv_x.begin(), qv_x.end()),
+        //                          *std::max_element(qv_x.begin(), qv_x.end()));
+
+        //ui->plot->yAxis->setRange(*std::min_element(qv_y.begin(), qv_y.end()),
+        //                          *std::max_element(qv_y.begin(), qv_y.end()));
+
+        //ui->plot->xAxis->moveRange(1);
+
         ui->plot->replot();
 }
 
 void awd::slot_for_new_point()
 {
-    if(ui->speed_checkBox->isChecked())
+    if( ui->A_vx_1_checkBox->isChecked() )
     {
         command[1] = 0x3c;
-        command[2] = 0x05;
+        command[2] = 0x00;//00
         command[3] = 0x00;
         command[4] = 0x00;
         command[5] = 0x00;
         command[6] = 0x00;
-        command[7] = 0xba;
+        command[7] = checkSumm(command);
 
         writeData((QByteArray::fromRawData((const char*)command, sizeof (command))));
-        command[7] = 0x00;
+        //command[7] = 0x00;
     }
+
+     if( ui->A_vx_2_checkBox->isChecked() )
+    {
+        command[1] = 0x3c;
+        command[2] = 0x01;//01
+        command[3] = 0x00;
+        command[4] = 0x00;
+        command[5] = 0x00;
+        command[6] = 0x00;
+        command[7] = checkSumm(command);
+
+        writeData((QByteArray::fromRawData((const char*)command, sizeof (command))));
+        //command[7] = 0x00;
+    }
+
+    if( ui->speed_checkBox->isChecked() )
+    {
+        command[1] = 0x3c;
+        command[2] = 0x05;//05
+        command[3] = 0x00;
+        command[4] = 0x00;
+        command[5] = 0x00;
+        command[6] = 0x00;
+        command[7] = checkSumm(command);
+
+        writeData((QByteArray::fromRawData((const char*)command, sizeof (command))));
+        //command[7] = 0x00;
+    }
+    else {}
 }
 
+void awd::chart_update_period(const int &value)
+{
+    timer->start(value);
+}
+
+/*
+void awd::slotMousePress(QMouseEvent *event)
+{
+    // Определение координаты X на графике, где был произведён клик мышью
+    double coordX = ui->plot->xAxis->pixelToCoord(event->pos().x());
+
+    // По координате X клика мыши определим ближайшие координаты для трассировщика
+    tracer->setGraphKey(coordX);
+
+    // Выводим координаты точки графика, где установился трассировщик, в lineEdit
+    ui->lineEdit->setText("x: " + QString::number(tracer->position->key()) +
+                          " y: " + QString::number(tracer->position->value()));
+    ui->plot->replot(); // Перерисовываем содержимое полотна графика
+}
+*/
+
+
+/*
 void awd::slot_for_A_vx_1()
 {
     if(ui->A_vx_1_checkBox->isChecked())
     {
+        //serial_port_properties();
+
         command[1] = 0x3c;
         command[2] = 0x00;
         command[3] = 0x00;
         command[4] = 0x00;
         command[5] = 0x00;
         command[6] = 0x00;
-        command[7] = 0xba;
+        command[7] = checkSumm(command);
 
         writeData((QByteArray::fromRawData((const char*)command, sizeof (command))));
-        command[7] = 0x00;
+        //command[7] = 0x00;
     }
 }
 
@@ -262,105 +420,45 @@ void awd::slot_for_A_vx_2()
 {
     if(ui->A_vx_2_checkBox->isChecked())
     {
+        //serial_port_properties();
+
         command[1] = 0x3c;
         command[2] = 0x01;
         command[3] = 0x00;
         command[4] = 0x00;
         command[5] = 0x00;
         command[6] = 0x00;
-        command[7] = 0xba;
+        command[7] = checkSumm(command);
 
         writeData((QByteArray::fromRawData((const char*)command, sizeof (command))));
-        command[7] = 0x00;
+        //command[7] = 0x00;
     }
 }
+*/
 
 void awd::on_write_all_by_default_clicked()
 {
-    command_formation(QString::number(by_default[0]),0);
-    ui->param_current_value_0->setText(QString::number(by_default[0]));
 
-    command_formation(QString::number(by_default[1]),1);
-    ui->param_current_value_1->setText(QString::number(by_default[1]));
 
-    command_formation(QString::number(by_default[2]),2);
-    ui->param_current_value_2->setText(QString::number(by_default[2]));
-
-    command_formation(QString::number(by_default[3]),3);
-    ui->param_current_value_3->setText(QString::number(by_default[3]));
-
-    command_formation(QString::number(by_default[4]),4);
-    ui->param_current_value_4->setText(QString::number(by_default[4]));
-
-    command_formation(QString::number(by_default[13]),13);
-    ui->param_current_value_13->setText(QString::number(by_default[13]));
-
-    command_formation(QString::number(by_default[14]),14);
-    ui->param_current_value_14->setText(QString::number(by_default[14]));
-
-    command_formation(QString::number(by_default[15]),15);
-    ui->param_current_value_15->setText(QString::number(by_default[15]));
-
-    command_formation(QString::number(by_default[16]),16);
-    ui->param_current_value_16->setText(QString::number(by_default[16]));
-
-    command_formation(QString::number(by_default[17]),17);
-    ui->param_current_value_17->setText(QString::number(by_default[17]));
-
-    command_formation(QString::number(by_default[21]),21);
-    ui->param_current_value_21->setText(QString::number(by_default[21]));
-
-    command_formation(QString::number(by_default[22]),22);
-    ui->param_current_value_22->setText(QString::number(by_default[22]));
-
-    command_formation(QString::number(by_default[23]),23);
-    ui->param_current_value_23->setText(QString::number(by_default[23]));
-
-    command_formation(QString::number(by_default[24]),24);
-    ui->param_current_value_24->setText(QString::number(by_default[24]));
-
-    command_formation(QString::number(by_default[25]),25);
-    ui->param_current_value_25->setText(QString::number(by_default[25]));
-
-    command_formation(QString::number(by_default[26]),26);
-    ui->param_current_value_26->setText(QString::number(by_default[26]));
-
-    command_formation(QString::number(by_default[27]),27);
-    ui->param_current_value_27->setText(QString::number(by_default[27]));
-
-    command_formation(QString::number(by_default[28]),28);
-    ui->param_current_value_28->setText(QString::number(by_default[28]));
-
-    command_formation(QString::number(by_default[29]),29);
-    ui->param_current_value_29->setText(QString::number(by_default[29]));
-
-    command_formation(QString::number(by_default[30]),30);
-    ui->param_current_value_30->setText(QString::number(by_default[30]));
-
-    command_formation(QString::number(by_default[31]),31);
-    ui->param_current_value_31->setText(QString::number(by_default[31]));
-
-    command_formation(QString::number(by_default[32]),32);
-    ui->param_current_value_32->setText(QString::number(by_default[32]));
-
-    command_formation(QString::number(by_default[33]),33);
-    ui->param_current_value_33->setText(QString::number(by_default[33]));
-
-    command_formation(QString::number(by_default[34]),34);
-    ui->param_current_value_34->setText(QString::number(by_default[34]));
-
-    command_formation(QString::number(by_default[35]),35);
-    ui->param_current_value_35->setText(QString::number(by_default[35]));
-
-    command_formation(QString::number(by_default[36]),36);
-    ui->param_current_value_36->setText(QString::number(by_default[36]));
-
+    for (int i = 0; i <= 36; i++ ) {
+         command_formation(QString::number(by_default[i]),i);
+        if(i == 5 || i == 6 || i==7 || i == 8 ||
+           i == 9 || i == 10 || i== 11 || i == 12 ||
+           i == 18 || i == 19 || i== 20 ){ }
+        else
+        param_current_value_array[i]->setText(QString::number(by_default[i]));
+    }
 }
 
 void awd::on_read_all_clicked()
 {
-    for(int i = 0; i <= 36; i++){
+    for(int i = 0; i <= 36; i++ ){
         command_formation(i);
+        if(i == 5 || i == 6 || i==7 || i == 8 ||
+           i == 9 || i == 10 || i== 11 || i == 12 ||
+           i == 18 || i == 19 || i== 20 ){ }
+        else
+        param_current_value_array[i]->setText(QString::number(current_param_value[i]));
     }
 }
 
@@ -624,6 +722,8 @@ void awd::change_state()
 
 void awd::on_read_button_regime_clicked()
 {
+    //serial_port_properties();
+
     command[1] = 0x87;
     command[2] = 0x1c;
     command[3] = 0x00;
@@ -633,64 +733,42 @@ void awd::on_read_button_regime_clicked()
     command[7] = checkSumm(command);
 
     writeData((QByteArray::fromRawData((const char*)command, sizeof (command))));
-    command[7] = 0x00;
+    //command[7] = 0x00;
 }
 
 void awd::on_write_button_regime_clicked()
 {
+    //serial_port_properties();
+
     command[1] = 0x78;
     command[2] = 0x1c;
     command[3] = 0x00;
 
-    if(ui->SkipLim->isChecked()) mode_data[14] = 1;
-    if(ui->LimDrop->isChecked()) mode_data[13] = 1;
-    if(ui->StopDrop->isChecked()) mode_data[12] = 1;
-    if(ui->IntrfEN->isChecked()) mode_data[11] = 1;
-    if(ui->IntrfVal->isChecked()) mode_data[10] = 1;
-    if(ui->IntrfDir->isChecked()) mode_data[9] = 1;
-    if(ui->SrcParam->isChecked()) mode_data[8] = 1;
+//Data1
+    if(ui->SkipLim->isChecked()) mode_data1 |= 64;
+    if(ui->LimDrop->isChecked()) mode_data1 |= 32;
+    if(ui->StopDrop->isChecked()) mode_data1 |= 16;
+    if(ui->IntrfEN->isChecked()) mode_data1 |= 8;
+    if(ui->IntrfVal->isChecked()) mode_data1 |= 4;
+    if(ui->IntrfDir->isChecked()) mode_data1 |= 2;
+    if(ui->SrcParam->isChecked()) mode_data1 |= 1;
+//Data0
+    if(ui->comboBox_mode->currentText() == "Стабилизация скор.по ЭДС") mode_data0 |= 0;
+    if(ui->comboBox_mode->currentText() == "Стабилизация скор.по энкодеру") mode_data0 |= 1;
+    if(ui->comboBox_mode->currentText() == "Слежение за внешним сигналом")mode_data0 |= 2;
+    if(ui->comboBox_mode->currentText() == "Ограничение момента") mode_data0 |= 3;
 
-    if(ui->comboBox_mode->currentText() == "Стабилизация скор.по ЭДС")
-    {
-        mode_data[3] = 0;
-        mode_data[2] = 0;
-        mode_data[1] = 0;
-        mode_data[0] = 0;
-    }
-
-    if(ui->comboBox_mode->currentText() == "Стабилизация скор.по энкодеру")
-    {
-        mode_data[3] = 0;
-        mode_data[2] = 0;
-        mode_data[1] = 0;
-        mode_data[0] = 1;
-    }
-
-    if(ui->comboBox_mode->currentText() == "Слежение за внешним сигналом")
-    {
-        mode_data[3] = 0;
-        mode_data[2] = 0;
-        mode_data[1] = 1;
-        mode_data[0] = 0;
-    }
-
-    if(ui->comboBox_mode->currentText() == "Ограничение момента")
-    {
-        mode_data[3] = 0;
-        mode_data[2] = 0;
-        mode_data[1] = 1;
-        mode_data[0] = 1;
-    }
-
-    command[4] = setData(mode_data.to_ulong(),1);//
-    command[5] = setData(mode_data.to_ulong(),0);//
+    command[4] = mode_data1;
+    command[5] = mode_data0;
     command[6] = 0x00;
     command[7] = checkSumm(command);
 
     writeData((QByteArray::fromRawData((const char*)command, sizeof (command))));
-    command[7] = 0x00;
+    //command[7] = 0x00;
     ///////////////
-    mode_data.reset();
+//обнуление для следующего запуска
+    mode_data0 = 0;
+    mode_data1 = 0;
 }
 
 void awd::on_stop_mode_button_clicked()
@@ -704,7 +782,7 @@ void awd::on_stop_mode_button_clicked()
     command[7] = checkSumm(command);
 
     writeData((QByteArray::fromRawData((const char*)command, sizeof (command))));
-    command[7] = 0x00;
+    //command[7] = 0x00;
 }
 
 void awd::on_start_tracking_clicked()
@@ -718,7 +796,7 @@ void awd::on_start_tracking_clicked()
     command[7] = checkSumm(command);
 
     writeData((QByteArray::fromRawData((const char*)command, sizeof (command))));
-    command[7] = 0x00;
+    //command[7] = 0x00;
 }
 
 void awd::on_Kp_valueChanged(int value)
@@ -732,7 +810,7 @@ void awd::on_Kp_valueChanged(int value)
     command[7] = checkSumm(command); //вычисление контрольной суммы
 
     writeData((QByteArray::fromRawData((const char*)command, sizeof (command))));
-    command[7] = 0x00;
+    //command[7] = 0x00;
 }
 
 void awd::on_Ki_valueChanged(int value)
@@ -746,7 +824,7 @@ void awd::on_Ki_valueChanged(int value)
     command[7] = checkSumm(command);//вычисление контрольной суммы
 
     writeData((QByteArray::fromRawData((const char*)command, sizeof (command))));
-    command[7] = 0x00;
+    //command[7] = 0x00;
 }
 
 void awd::on_Kd_valueChanged(int value)
@@ -760,7 +838,7 @@ void awd::on_Kd_valueChanged(int value)
     command[7] = checkSumm(command);//вычисление контрольной суммы
 
     writeData((QByteArray::fromRawData((const char*)command, sizeof (command))));
-    command[7] = 0x00;
+    //command[7] = 0x00;
 }
 
 void awd::on_speed_horizontalSlider_valueChanged(int value)
@@ -774,7 +852,7 @@ void awd::on_speed_horizontalSlider_valueChanged(int value)
     command[7] = checkSumm(command);//вычисление контрольной суммы
 
     writeData((QByteArray::fromRawData((const char*)command, sizeof (command))));
-    command[7] = 0x00;
+    //command[7] = 0x00;
 }
 
 void awd::on_stop_button_clicked()
@@ -785,11 +863,12 @@ void awd::on_stop_button_clicked()
     command[4] = 0x00;
     command[5] = 0x00;
     command[6] = 0x00;
-    command[7] = checkSumm(command);//вычисление контрольной суммы
+    command[7] = checkSumm(command);
 
-    ui->speed_spinBox->setValue(0);
+    //ui->speed_spinBox->setValue(0);
 
     writeData((QByteArray::fromRawData((const char*)command, sizeof (command))));
+    ui->speed_spinBox->setValue(0);
     command[7] = 0x00;
 }
 
@@ -811,8 +890,8 @@ void awd::on_Kd_spinBox_valueChanged(const QString &arg1)
 
 void awd::plot_settings()
 {
-    ui->plot->setInteraction(QCP::iRangeDrag, true);//включаем взаимодействие удаления/приближения графика
-    ui->plot->setInteraction(QCP::iRangeZoom, true);//включаем взвимодействие перетаскивания графика
+    ui->plot->setInteraction(QCP::iRangeDrag, true);// взаимодействие удаления/приближения графика
+    ui->plot->setInteraction(QCP::iRangeZoom, true);// взвимодействие перетаскивания графика
 
     ui->plot->addGraph();
     ui->plot->graph(0)->setScatterStyle(QCPScatterStyle::ssDisc);
@@ -835,8 +914,14 @@ void awd::on_btn_clear_clicked()
     //clearData
     qv_x.clear();
     qv_y.clear();
+    qavx1_x.clear();
+    qavx1_y.clear();
+    qavx2_x.clear();
+    qavx2_y.clear();
     // plot
     ui->plot->graph(0)->setData(qv_x, qv_y);
+    ui->plot->graph(1)->setData(qavx1_x, qavx1_y);
+    ui->plot->graph(1)->setData(qavx2_x, qavx2_y);
     ui->plot->replot();
     ui->plot->update();
 }
@@ -844,6 +929,7 @@ void awd::on_btn_clear_clicked()
 void awd::writeData(const QByteArray &data)
 {
     if(serial->isOpen() == true){
+        qDebug() << "write port : " << serial->portName();
         serial->write(data);
         serial->waitForBytesWritten();
         if (serial->isWritable())
@@ -853,6 +939,7 @@ void awd::writeData(const QByteArray &data)
         readData();
     }
     else qDebug() << "not open";
+    command[7] = 0x00;// сброс контрольной суммы после записи
 }
 
 char16_t awd::setReadDataValue(const QByteArray &data)
@@ -875,25 +962,22 @@ void awd::readData()
     if(ui->status_checkBox->isChecked())
     {
         status_read(data);
+    } else {
+        ui->StLimFrw->setChecked(0);
+        ui->StLimRev->setChecked(0);
+        ui->StinFrw->setChecked(0);
+        ui->StinRev->setChecked(0);
+        ui->StMotAct->setChecked(0);
+        ui->StDirFrwRev->setChecked(0);
+        ui->StMaxPWM->setChecked(0);
+        ui->StOverCur->setChecked(0);
     }
 
-// Скорость
-          if(data[1] == (char)0x3c && data[2] == (char)0x05 )
-          {
-              real_plot(setReadDataValue(data));
-              qDebug() << setReadDataValue(data);
-          }
-// А.вх 1, 2
-          if(data[1] == (char)0x3c && data[2] == (char)0x00)
-          {
-              real_plot(setReadDataValue(data));
-              qDebug() << setReadDataValue(data);
-          }
-          if(data[1] == (char)0x3c && data[2] == (char)0x01)
-          {
-              real_plot(setReadDataValue(data));
-              qDebug() << setReadDataValue(data);
-          }
+//График
+    if(data[1] == (char)0x3c)
+    {
+        real_plot(data);
+    }
 
 // Параметры
        if(data[1] == (char)0x87 && data[2] == (char)0x00)
@@ -1054,4 +1138,58 @@ void awd::readData()
 
        ui->read_label->setText(data.toHex( ' ' ));
     } else qDebug() << "no answer";
+
+    command[7] = 0x00;
 }
+
+void awd::on_spinBox_period_editingFinished()
+{
+    chart_update_period(ui->spinBox_period->value());
+}
+
+
+void awd::on_export_button_clicked()
+{
+    QString filter = "AllFile (*.*) ;; Text File (*.txt)";
+    QString file_name = QFileDialog::getOpenFileName(this,  "opena file", "С:://", filter);
+    QFile file(file_name);
+
+    if(!file.open(QFile::WriteOnly | QFile::Text))
+    {
+        QMessageBox::warning(this, "title", "file not open");
+    }
+
+    QTextStream out(&file);
+
+//
+    out << "ADC_1\t\n"
+        << "Time\t" << "Value\t\n";
+
+    for (int i = 0; i < qavx1_x.size(); i++ )
+    {
+        out << qavx1_x[i] << "\t  " << qavx1_y[i] << "\t\n";
+
+    }
+
+
+
+//
+    out << "\nADC_2\t\n"
+        << "Time\t" << "Value\t\n";
+    for (int i = 0; i < qavx2_x.size(); i++ )
+    {
+        out << qavx2_x[i] << "\t  " << qavx2_y[i] << "\t\n";
+    }
+
+//
+    out << "\nSpeed\t\n"
+        << "Time\t" << "Value\t\n";
+    for (int i = 0; i < qv_x.size(); i++ )
+    {
+        out << qv_x[i] << "\t  " << qv_y[i] << "\t\n";
+    }
+    file.flush();
+    file.close();
+
+}
+
